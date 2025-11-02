@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Joyeux Anniversaire Maman 🎉</title>
+
+  <style>
+    :root{
+      --bg:#ffdaf0;
+      --card:#ffe6f4;
+      --accent:#ff4da6;
+      --muted:#b86b8f;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background:linear-gradient(135deg,#ffb3da 0%, #ffdaf0 60%);
+      color:#5a0030;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:960px;
+    }
+
+    /* HEADER */
+    header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:nowrap;
+    }
+
+    header .logo{
+      width:50px;
+      height:50px;
+      border-radius:12px;
+      overflow:hidden;
+      border:2px solid rgba(255,0,120,0.2);
+      background:linear-gradient(180deg,#ffb3d9,#ff80bf);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+
+    header .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    header .title{
+      flex:1 1 auto;
+      font-weight:bold;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      color:#c40063;
+    }
+
+    header .title h1{
+      margin:0;
+      font-size:18px;
+    }
+
+    header .buttons{
+      display:flex;
+      gap:6px;
+      flex-shrink:0;
+    }
+
+    .btn{
+      padding:6px 10px;
+      font-size:14px;
+      border-radius:8px;
+      cursor:pointer;
+      border:1px solid rgba(255,0,120,0.3);
+      background:rgba(255,255,255,0.3);
+      color:#7a0040;
+      font-weight:600;
+      backdrop-filter:blur(4px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,#ff4da6,#ff80c8);
+      border:none;
+      color:white;
+    }
+
+    .btn:active{
+      transform:translateY(1px);
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:20px;
+      align-items:stretch;
+    }
+    @media(max-width:880px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:rgba(255,255,255,0.4);
+      border-radius:18px;
+      padding:20px;
+      box-shadow:0 6px 30px rgba(255,0,120,0.3);
+      border:1px solid rgba(255,0,120,0.2);
+    }
+
+    .profile{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:12px;
+    }
+
+    .profile .pic{
+      width:100%;
+      height:260px;
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#ffb3d9,#ff80bf);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .profile .pic img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .profile h2{
+      margin:6px 0 0;
+      font-size:22px;
+      color:#c40063;
+    }
+
+    .sub{
+      color:#b86b8f;
+      font-size:14px;
+    }
+
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    .controls .btn{
+      flex:1 1 auto;
+      min-width:100px;
+    }
+
+    .messages{padding:8px 4px;margin-top:8px}
+    .message{
+      display:none;
+      padding:14px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.5);
+      border:1px solid rgba(255,0,120,0.15);
+      margin-bottom:10px;
+    }
+    .message.active{display:block}
+
+    .meta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:#b86b8f;
+      margin-top:12px;
+    }
+
+    .actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    /* CONFETTI */
+    #confetti{
+      position:fixed;
+      left:0; top:0;
+      pointer-events:none;
+      z-index:9999;
+    }
+
+    footer{
+      margin-top:16px;
+      text-align:center;
+      color:#b86b8f;
+      font-size:13px;
+    }
+
+    @media(max-width:480px){
+      header .logo{width:40px;height:40px;}
+      header .title h1{font-size:16px;}
+      .btn{padding:4px 8px;font-size:12px;}
+      .profile .pic{height:160px;}
+      .profile h2{font-size:18px;}
+      .sub{font-size:12px;}
+    }
+  </style>
+</head>
+
+<body>
+<canvas id="confetti"></canvas>
+
+<div class="wrap">
+
+  <header>
+    <div class="logo">
+      <img src="WhatsApp Image 2025-11-02 à 21.31.06_c85f52bd.jpg" alt="Photo maman">
+    </div>
+
+    <div class="title">
+      <h1>Joyeux anniversaire, <span id="momName">Destinée Dorcas AGBOMENOU</span> 🎂</h1>
+    </div>
+
+    <div class="buttons">
+      <button class="btn" id="printBtn">Imprimer</button>
+      <button class="btn primary" id="playBtn">Joyeux !</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="card">
+      <h3 style="color:#c40063">Choisis le style du message</h3>
+
+      <div class="controls">
+        <button class="btn" data-msg="spirituel">✨ Spirituel</button>
+        <button class="btn" data-msg="sentimental">❤️ Sentimental</button>
+        <button class="btn" data-msg="joyeux">🎉 Joyeux</button>
+        <button class="btn" data-msg="elegant">👑 Élégant</button>
+        <button class="btn" data-msg="mixte">💎 Mixte</button>
+      </div>
+
+      <div class="messages">
+        <div id="spirituel" class="message">
+          <strong>Message spirituel</strong>
+          <p>Que la lumière divine t’accompagne, Destinée.</p>
+        </div>
+        <div id="sentimental" class="message">
+          <strong>Message sentimental</strong>
+          <p>Destinée, tu es mon cœur et ma force.</p>
+        </div>
+        <div id="joyeux" class="message">
+          <strong>Message joyeux</strong>
+          <p>Que la fête commence !</p>
+        </div>
+        <div id="elegant" class="message">
+          <strong>Message élégant</strong>
+          <p>Une reine mérite un jour royal.</p>
+        </div>
+        <div id="mixte" class="message active">
+          <strong>Message mixte</strong>
+          <p>Destinée, tu es amour, lumière et joie.</p>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div class="small">Clique sur « Joyeux ! » pour la musique 🎵</div>
+
+        <div class="actions">
+          <button class="btn" id="copyBtn">Copier</button>
+          <button class="btn" id="downloadBtn">Télécharger</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card profile">
+      <div class="pic">
+        <img src="WhatsApp Image 2025-11-02 à 21.33.01_ce379f89.jpg">
+      </div>
+
+      <h2 id="headline">Bonne fête, Destinée</h2>
+      <div class="sub">Choisis un style de message</div>
+
+      <div class="controls" style="margin-top:8px">
+        <input id="nameInput" placeholder="Entrez le prénom" style="padding:8px;border-radius:8px;border:1px solid #ff99cc;background:white;color:#7a0040;width:100%">
+        <button class="btn primary" id="setName">Envoyer</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer>BEN CREATION — Toute la famille t’aime 🌸</footer>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="music" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<script>
+const buttons=document.querySelectorAll('[data-msg]');
+const messages=document.querySelectorAll('.message');
+let activeId='mixte';
+
+function show(id){
+  messages.forEach(m=>m.classList.toggle('active',m.id===id));
+  activeId=id;
+}
+
+buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.msg)));
+
+document.getElementById('copyBtn').onclick=()=>{
+  navigator.clipboard.writeText(document.getElementById(activeId).innerText);
+  alert("Copié !");
+};
+
+document.getElementById('printBtn').onclick=()=>window.print();
+
+document.getElementById('setName').onclick=()=>{
+  const v=nameInput.value.trim();
+  if(v){
+    momName.textContent=v.toUpperCase();
+    headline.textContent=`Bonne fête, ${v}`;
+  }
+};
+
+document.getElementById('playBtn').onclick=async()=>{
+  makeConfetti();
+  try{ await music.play(); }catch{}
+};
+
+/* CONFETTI */
+const canvas=document.getElementById('confetti');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;} resize();
+addEventListener('resize',resize);
+
+function rand(a,b){return Math.random()*(b-a)+a;}
+
+function makeConfetti(){
+  const pieces=[];
+  for(let i=0;i<160;i++){
+    pieces.push({x:rand(0,canvas.width),y:rand(-canvas.height,0),
+      w:rand(6,12),h:rand(6,12),
+      vx:rand(-1.5,1.5),vy:rand(2,6),
+      rot:rand(0,360),vr:rand(-7,7)
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr; p.vy+=0.03;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=`hsl(${(p.x%360)},90%,70%)`;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+</script>
+
+</body>
+</html>
