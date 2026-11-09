@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Joyeux Anniversaire Maman 🎉</title>
+  <title>Joyeux anniversaire, Choukourath 🎉</title>
 
   <style>
     :root{
-      --bg:#ffdaf0;
-      --card:#ffe6f4;
-      --accent:#ff4da6;
-      --muted:#b86b8f;
+      --bg:#100b0c;
+      --card:#171014;
+      --accent:#ed4f91;
+      --accent-warm:#ff765c;
+      --accent-deep:#ff83ac;
+      --ink:#fff5f7;
+      --muted:#e4bdcc;
     }
 
     *{box-sizing:border-box}
@@ -18,8 +21,10 @@
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-      background:linear-gradient(135deg,#ffb3da 0%, #ffdaf0 60%);
-      color:#5a0030;
+      background:
+        linear-gradient(rgba(8,5,7,0.65),rgba(8,5,7,0.76)),
+        url("WhatsApp Image 2026-11-09 at 10.16.05 (2).jpeg") center / cover fixed;
+      color:var(--ink);
       min-height:100vh;
       display:flex;
       align-items:center;
@@ -45,8 +50,8 @@
       height:50px;
       border-radius:12px;
       overflow:hidden;
-      border:2px solid rgba(255,0,120,0.2);
-      background:linear-gradient(180deg,#ffb3d9,#ff80bf);
+      border:2px solid rgba(255,131,172,0.45);
+      background:#171014;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -65,7 +70,7 @@
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      color:#c40063;
+      color:var(--accent-deep);
     }
 
     header .title h1{
@@ -84,15 +89,15 @@
       font-size:14px;
       border-radius:8px;
       cursor:pointer;
-      border:1px solid rgba(255,0,120,0.3);
-      background:rgba(255,255,255,0.3);
-      color:#7a0040;
+      border:1px solid rgba(255,131,172,0.36);
+      background:rgba(16,11,12,0.78);
+      color:var(--ink);
       font-weight:600;
       backdrop-filter:blur(4px);
     }
 
     .btn.primary{
-      background:linear-gradient(90deg,#ff4da6,#ff80c8);
+      background:linear-gradient(90deg,var(--accent-warm),var(--accent));
       border:none;
       color:white;
     }
@@ -113,11 +118,11 @@
     }
 
     .card{
-      background:rgba(255,255,255,0.4);
+      background:rgba(17,12,14,0.84);
       border-radius:18px;
       padding:20px;
-      box-shadow:0 6px 30px rgba(255,0,120,0.3);
-      border:1px solid rgba(255,0,120,0.2);
+      box-shadow:0 6px 30px rgba(0,0,0,0.4);
+      border:1px solid rgba(255,131,172,0.3);
     }
 
     .profile{
@@ -133,7 +138,7 @@
       height:260px;
       border-radius:12px;
       overflow:hidden;
-      background:linear-gradient(180deg,#ffb3d9,#ff80bf);
+      background:#171014;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -143,16 +148,17 @@
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position:center 20%;
     }
 
     .profile h2{
       margin:6px 0 0;
       font-size:22px;
-      color:#c40063;
+      color:var(--accent-deep);
     }
 
     .sub{
-      color:#b86b8f;
+      color:var(--muted);
       font-size:14px;
     }
 
@@ -174,8 +180,8 @@
       display:none;
       padding:14px;
       border-radius:10px;
-      background:rgba(255,255,255,0.5);
-      border:1px solid rgba(255,0,120,0.15);
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,131,172,0.2);
       margin-bottom:10px;
     }
     .message.active{display:block}
@@ -185,7 +191,7 @@
       gap:10px;
       align-items:center;
       justify-content:space-between;
-      color:#b86b8f;
+      color:var(--muted);
       margin-top:12px;
     }
 
@@ -206,7 +212,7 @@
     footer{
       margin-top:16px;
       text-align:center;
-      color:#b86b8f;
+      color:var(--muted);
       font-size:13px;
     }
 
@@ -228,22 +234,22 @@
 
   <header>
     <div class="logo">
-      <img src="WhatsApp Image 2025-11-02 à 21.31.06_c85f52bd.jpg" alt="Photo maman">
+      <img src="WhatsApp Image 2026-11-09 at 10.16.05.jpeg" alt="Photo de Choukourath en tenue traditionnelle">
     </div>
 
     <div class="title">
-      <h1>Joyeux anniversaire, <span id="momName">Destinée Dorcas AGBOMENOU</span> 🎂</h1>
+      <h1>Joyeux anniversaire, <span id="momName">Choukourath</span> 🎂</h1>
     </div>
 
     <div class="buttons">
       <button class="btn" id="printBtn">Imprimer</button>
-      <button class="btn primary" id="playBtn">Joyeux !</button>
+      <button class="btn primary" id="playBtn" aria-pressed="false">Joyeux !</button>
     </div>
   </header>
 
   <main class="hero">
     <section class="card">
-      <h3 style="color:#c40063">Choisis le style du message</h3>
+      <h3 style="color:var(--accent-deep)">Choisis le style du message</h3>
 
       <div class="controls">
         <button class="btn" data-msg="spirituel">✨ Spirituel</button>
@@ -256,11 +262,11 @@
       <div class="messages">
         <div id="spirituel" class="message">
           <strong>Message spirituel</strong>
-          <p>Que la lumière divine t’accompagne, Destinée.</p>
+          <p>Que la lumière divine t’accompagne, Choukourath.</p>
         </div>
         <div id="sentimental" class="message">
           <strong>Message sentimental</strong>
-          <p>Destinée, tu es mon cœur et ma force.</p>
+          <p>Choukourath, tu es mon cœur et ma force.</p>
         </div>
         <div id="joyeux" class="message">
           <strong>Message joyeux</strong>
@@ -272,7 +278,7 @@
         </div>
         <div id="mixte" class="message active">
           <strong>Message mixte</strong>
-          <p>Destinée, tu es amour, lumière et joie.</p>
+          <p>Choukourath, tu es amour, lumière et joie.</p>
         </div>
       </div>
 
@@ -288,14 +294,14 @@
 
     <aside class="card profile">
       <div class="pic">
-        <img src="WhatsApp Image 2025-11-02 à 21.48.18_4d92c9bd.jpg">
+        <img src="WhatsApp Image 2026-11-09 at 10.16.05 (1).jpeg" alt="Portrait de Choukourath">
       </div>
 
-      <h2 id="headline">Bonne fête, Destinée</h2>
+      <h2 id="headline">Bonne fête, Choukourath</h2>
       <div class="sub">Choisis un style de message</div>
 
       <div class="controls" style="margin-top:8px">
-        <input id="nameInput" placeholder="Entrez le prénom" style="padding:8px;border-radius:8px;border:1px solid #ff99cc;background:white;color:#7a0040;width:100%">
+        <input id="nameInput" placeholder="Entrez le prénom" style="padding:8px;border-radius:8px;border:1px solid var(--accent);background:#171014;color:var(--ink);width:100%">
         <button class="btn primary" id="setName">Envoyer</button>
       </div>
     </aside>
@@ -335,9 +341,24 @@ document.getElementById('setName').onclick=()=>{
   }
 };
 
-document.getElementById('playBtn').onclick=async()=>{
-  makeConfetti();
-  try{ await music.play(); }catch{}
+const music=document.getElementById('music');
+const playBtn=document.getElementById('playBtn');
+playBtn.onclick=async()=>{
+  if(music.paused){
+    makeConfetti();
+    try{
+      await music.play();
+      playBtn.textContent='Pause ⏸';
+      playBtn.setAttribute('aria-pressed','true');
+    }catch(error){
+      alert("Impossible de démarrer la musique. Vérifie ta connexion internet puis réessaie.");
+      console.error('Échec de la lecture audio :',error);
+    }
+  }else{
+    music.pause();
+    playBtn.textContent='Reprendre ▶';
+    playBtn.setAttribute('aria-pressed','false');
+  }
 };
 
 /* CONFETTI */
